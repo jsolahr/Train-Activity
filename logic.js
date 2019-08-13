@@ -9,7 +9,7 @@ var config = {
   
   var database = firebase.database();
   
-  // 2. Button for adding Employees
+  // 2. Button for adding Trains
   $("#add-train-btn").on("click", function(event) {
     event.preventDefault();
   
@@ -39,7 +39,7 @@ var config = {
     alert("Train was successfully added");
   
     // Clears all of the text-boxes
-    $("#employee-name-input").val("");
+    $("#train-name-input").val("");
     $("#destination-input").val("");
     $("#first-input").val("");
     $("#frequency-input").val("");
@@ -93,15 +93,12 @@ var config = {
        console.log("ARRIVAL TIME: " + moment(minutesAway).format("h:mm"));
 
 
-    // Prettify the train start
-    var trainStartPretty = moment.unix(minutesAway).format("LT");
-  
     // Create the new row
     var newRow = $("<tr>").append(
       $("<td>").text(trainName),
       $("<td>").text(trainDest),
       $("<td>").text(trainFreq),
-      $("<td>").text(moment(minutesAway).format("h:mm")),
+      $("<td>").text(moment(minutesAway).format("h:mm a")),
       $("<td>").text(tMinutesTillTrain),
     );
   
